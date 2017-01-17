@@ -6,18 +6,15 @@ public class ScoreManager : MonoBehaviour
 {
     public static int score;
 
+    private Text text;
 
-    Text text;
-
-
-    void Awake ()
+	private void Awake ()
     {
         text = GetComponent <Text> ();
         score = 0;
     }
 
-
-    void Update ()
+	private void Update ()
     {
         text.text = "Score: " + score;
     }
