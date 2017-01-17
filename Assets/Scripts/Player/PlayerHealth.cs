@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-
 public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
@@ -14,16 +13,14 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    private Animator anim;
+	private AudioSource playerAudio;
+	private PlayerMovement playerMovement;
+	//private PlayerShooting playerShooting;
+	private bool isDead;
+	private bool damaged;
 
-    Animator anim;
-    AudioSource playerAudio;
-    PlayerMovement playerMovement;
-    //PlayerShooting playerShooting;
-    bool isDead;
-    bool damaged;
-
-
-    void Awake ()
+	private void Awake ()
     {
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
@@ -32,8 +29,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startingHealth;
     }
 
-
-    void Update ()
+	private void Update ()
     {
         if(damaged)
         {
@@ -45,7 +41,6 @@ public class PlayerHealth : MonoBehaviour
         }
         damaged = false;
     }
-
 
     public void TakeDamage (int amount)
     {
@@ -63,8 +58,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
-    void Death ()
+	private void Death ()
     {
         isDead = true;
 
@@ -78,7 +72,6 @@ public class PlayerHealth : MonoBehaviour
         playerMovement.enabled = false;
         //playerShooting.enabled = false;
     }
-
 
     public void RestartLevel ()
     {
