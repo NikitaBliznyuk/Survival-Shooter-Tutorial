@@ -7,14 +7,12 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
 
-
-    void Start ()
+    private void Start ()
     {
         InvokeRepeating ("Spawn", spawnTime, spawnTime);
     }
 
-
-    void Spawn ()
+    private void Spawn ()
     {
         if(playerHealth.currentHealth <= 0f)
         {
